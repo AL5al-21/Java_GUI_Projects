@@ -1,4 +1,5 @@
-This is an update for previous project [Car managment system](https://github.com/AL5al-21/Java_GUI_Projects/blob/Cars_management_system/README.md) with some new features like (register,interaction panel,etc..)
+This is an update for previous project [Car managment system](https://github.com/AL5al-21/Java_GUI_Projects/blob/Cars_management_system/README.md) with some new features like (register,interactive panel
+,etc..)
 
 
 
