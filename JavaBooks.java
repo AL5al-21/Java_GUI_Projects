@@ -13,7 +13,7 @@ public class JavaBooks extends JFrame implements ActionListener {
   JButton connectButton, exitButton, insertButton, deleteButton, deleteAllButton, searchButton, updateButton,
   clearButton, printButton, hideButton, okButton;
   JTextField ISBN, title, author, publication_year;
-  JPanel panel, panelB;
+  JPanel panel, panelB,panelU,panelD,panelA,panelP,panelS;
   JComboBox genre;
   JRadioButton b1, b2, b3, b4;
   ButtonGroup bg;
@@ -60,6 +60,37 @@ public class JavaBooks extends JFrame implements ActionListener {
     panel.setBackground(fore);
     panel.setLayout(null);
     panel.setBorder(BorderFactory.createLineBorder(new Color(124, 62, 108), 7));
+
+    panelU = new JPanel();
+    panelU.setBounds(900, 100, 900, 750);
+    panelU.setBackground(fore);
+    panelU.setLayout(null);
+    panelU.setBorder(BorderFactory.createLineBorder(new Color(124, 62, 108), 7));
+
+    panelA = new JPanel();
+    panelA.setBounds(900, 100, 900, 750);
+    panelA.setBackground(fore);
+    panelA.setLayout(null);
+    panelA.setBorder(BorderFactory.createLineBorder(new Color(124, 62, 108), 7));
+
+    panelD = new JPanel();
+    panelD.setBounds(900, 100, 900, 750);
+    panelD.setBackground(fore);
+    panelD.setLayout(null);
+    panelD.setBorder(BorderFactory.createLineBorder(new Color(124, 62, 108), 7));
+
+    panelS = new JPanel();
+    panelS.setBounds(900, 100, 900, 750);
+    panelS.setBackground(fore);
+    panelS.setLayout(null);
+    panelS.setBorder(BorderFactory.createLineBorder(new Color(124, 62, 108), 7));
+
+    panelP = new JPanel();
+    panelP.setBounds(900, 100, 900, 750);
+    panelP.setBackground(fore);
+    panelP.setLayout(null);
+    panelP.setBorder(BorderFactory.createLineBorder(new Color(124, 62, 108), 7));
+    
 
     panelB = new JPanel();
     panelB.setBackground(fore);
@@ -293,6 +324,13 @@ public class JavaBooks extends JFrame implements ActionListener {
     getContentPane().add(errorL);
     getContentPane().add(ifo);
     getContentPane().add(panel);
+    /* 
+    getContentPane().add(panelU);
+    getContentPane().add(panelP);
+    getContentPane().add(panelD);
+    getContentPane().add(panelS);
+    getContentPane().add(panelA);
+    */
     getContentPane().add(exitButton);
     getContentPane().add(b1);
     getContentPane().add(b2);
@@ -363,6 +401,9 @@ public class JavaBooks extends JFrame implements ActionListener {
     }
     if (e.getSource() == insertButton && !(publication_yearL.isVisible()) || e.getSource() == insertButton && infoL.getText().equals("Update Panel")) {
       if (panel.isVisible()) {
+        sp.setVisible(false);
+        tb.setVisible(false);
+        hideButton.setVisible(false);
         ifo.setVisible(false);
         okButton.setVisible(false);
         b1.setVisible(false);
@@ -383,6 +424,10 @@ public class JavaBooks extends JFrame implements ActionListener {
         infoL.setText("Add Panel");
         infoL.setVisible(true);
         banner.setVisible(false);
+        ISBN.setText("");
+          author.setText("");
+          title.setText("");
+          publication_year.setText("");
 
       }
 
@@ -391,6 +436,9 @@ public class JavaBooks extends JFrame implements ActionListener {
       if (!(ISBN.getText().equals(""))) {
         ifo.setVisible(false);
         try {
+          sp.setVisible(false);
+        tb.setVisible(false);
+        hideButton.setVisible(false);
           int isid = Integer.parseInt(ISBN.getText());
           String sql = "INSERT INTO " + database_table + "(ISBN, Title,Publication_year,Author,Genre) VALUES (" + isid + "," + "'" + title.getText() + "'" + "," + "'" + publication_year.getText() + "'" + "," + "'" + author.getText() + "'" + "," + "'" + (String) genre.getSelectedItem() + "'" + ")";
           statement.executeUpdate(sql);
@@ -434,7 +482,9 @@ public class JavaBooks extends JFrame implements ActionListener {
     if (e.getSource() == searchButton && !(publication_yearL.isVisible()) || e.getSource() == searchButton && infoL.getText().equals("Add Panel")) {
       if (panel.isVisible()) {
         infoL.setText("Search Panel");
-
+        sp.setVisible(false);
+        tb.setVisible(false);
+        hideButton.setVisible(false);
         infoL.setVisible(true);
         ifo.setVisible(false);
         clearButton.setVisible(false);
@@ -541,10 +591,13 @@ public class JavaBooks extends JFrame implements ActionListener {
     }
 
     if (e.getSource() == searchButton && b1.isSelected()) {
+
       ifo.setVisible(false);
       banner.setVisible(false);
       sp.setVisible(false);
       tb.setVisible(false);
+
+        hideButton.setVisible(false);
       for (int i = 0; i < 100; i++) {
         for (int j = 0; j < 6; j++) {
           row[i][j] = null;
@@ -606,6 +659,8 @@ public class JavaBooks extends JFrame implements ActionListener {
       banner.setVisible(false);
       sp.setVisible(false);
       tb.setVisible(false);
+      
+        hideButton.setVisible(false);
       for (int i = 0; i < 100; i++) {
         for (int j = 0; j < 6; j++) {
           row[i][j] = null;
@@ -668,6 +723,7 @@ public class JavaBooks extends JFrame implements ActionListener {
       banner.setVisible(false);
       sp.setVisible(false);
       tb.setVisible(false);
+        hideButton.setVisible(false);
       for (int i = 0; i < 100; i++) {
         for (int j = 0; j < 6; j++) {
           row[i][j] = null;
@@ -738,6 +794,8 @@ public class JavaBooks extends JFrame implements ActionListener {
       banner.setVisible(false);
       sp.setVisible(false);
       tb.setVisible(false);
+      
+        hideButton.setVisible(false);
       for (int i = 0; i < 100; i++) {
         for (int j = 0; j < 6; j++) {
           row[i][j] = null;
@@ -811,6 +869,7 @@ public class JavaBooks extends JFrame implements ActionListener {
       sp.setVisible(false);
       tb.setVisible(false);
       ifo.setVisible(false);
+      infoL.setText("");
       banner.setVisible(false);
       okButton.setVisible(false);
 
@@ -883,39 +942,7 @@ public class JavaBooks extends JFrame implements ActionListener {
       }
     }
 
-    if (e.getSource() == updateButton) {
-      if (panel.isVisible()) {
-        infoL.setText("Update Panel");
-        infoL.setVisible(true);
-        b1.setVisible(true);
-        b2.setVisible(false);
-        b3.setVisible(false);
-        b4.setVisible(true);
-        okButton.setVisible(true);
-        banner.setVisible(false);
-        ifo.setVisible(false);
-        ISBN.setVisible(false);
-        ISBNL.setVisible(false);
-        errorL.setVisible(false);
-        errorL.setText("Error: Record not found");
-        ISBN.setVisible(false);
-        ISBNL.setVisible(false);
-        title.setVisible(false);
-        titleL.setVisible(false);
-        author.setVisible(false);
-        authorL.setVisible(false);
-        genre.setVisible(false);
-        genreL.setVisible(false);
-        publication_year.setVisible(false);
-        publication_yearL.setVisible(false);
-        clearButton.setVisible(false);
-        sp.setVisible(false);
-        tb.setVisible(false);
-        hideButton.setVisible(false);
-        bg.clearSelection();
-      }
-
-    }
+    
     if (e.getSource() == okButton && b1.isSelected() && infoL.getText().equals("Update Panel")) {
       if (panel.isVisible()) {
         ifo.setVisible(false);
@@ -938,7 +965,8 @@ public class JavaBooks extends JFrame implements ActionListener {
         infoL.setText("Update Panel");
         infoL.setVisible(true);
         banner.setVisible(false);
-        bg.clearSelection();
+        
+        
 
       }
 
@@ -965,7 +993,7 @@ public class JavaBooks extends JFrame implements ActionListener {
         infoL.setText("Update Panel");
         infoL.setVisible(true);
         banner.setVisible(false);
-        bg.clearSelection();
+        
 
       }
 
@@ -982,7 +1010,6 @@ public class JavaBooks extends JFrame implements ActionListener {
           String sql = "UPDATE " + database_table + " SET Title=" + "'" + title.getText() + "'" + "," + "Author=" + "'" + author.getText() + "'" + "," + "Genre=" + "'" + (String) genre.getSelectedItem() + "'" + "," + "Publication_year=" + "'" + publication_year.getText() + "'" + " WHERE ISBN=" + isid;
           statement.executeUpdate(sql);
           JOptionPane.showMessageDialog(this, "Record updated ");
-          publication_year.setText("");
           ISBN.setText("");
           author.setText("");
           title.setText("");
@@ -1009,18 +1036,23 @@ public class JavaBooks extends JFrame implements ActionListener {
           publication_yearL.setVisible(false);
           clearButton.setVisible(false);
           okButton.setVisible(false);
+          sp.setVisible(false);
+        tb.setVisible(false);
+        hideButton.setVisible(false);
           infoL.setVisible(false);
         } catch (Exception e2) {
           JOptionPane.showMessageDialog(this, "Error: Record is not updated \n" + "Record Not Found [ISBN]");
         }
       }
     }
-    if (e.getSource() == updateButton && b1.isSelected() && infoL.getText().equals("Update Panel")) {
+    else if (e.getSource() == updateButton && b1.isSelected() && infoL.getText().equals("Update Panel")) {
       ifo.setVisible(false);
+      
       if (panel.isVisible()) {
         banner.setVisible(false);
 
         try {
+          System.out.println("update");
           bg.clearSelection();
           System.out.println("up" + title.getText());
           int isid = Integer.parseInt(ISBN.getText());
@@ -1049,6 +1081,9 @@ public class JavaBooks extends JFrame implements ActionListener {
           publication_yearL.setVisible(false);
           clearButton.setVisible(false);
           okButton.setVisible(false);
+          sp.setVisible(false);
+        tb.setVisible(false);
+        hideButton.setVisible(false);
           infoL.setVisible(false);
 
         } catch (Exception e2) {
@@ -1056,8 +1091,85 @@ public class JavaBooks extends JFrame implements ActionListener {
         }
       }
     }
+    else if (e.getSource() == updateButton) {
+      if (panel.isVisible()) {
+        infoL.setText("Update Panel");
+        infoL.setVisible(true);
+        b1.setVisible(true);
+        b2.setVisible(false);
+        b3.setVisible(false);
+        b4.setVisible(true);
+        okButton.setVisible(true);
+        banner.setVisible(false);
+        ifo.setVisible(false);
+        ISBN.setVisible(false);
+        ISBNL.setVisible(false);
+        errorL.setVisible(false);
+        errorL.setText("Error: Record not found");
+        ISBN.setVisible(false);
+        ISBNL.setVisible(false);
+        title.setVisible(false);
+        titleL.setVisible(false);
+        author.setVisible(false);
+        authorL.setVisible(false);
+        genre.setVisible(false);
+        genreL.setVisible(false);
+        publication_year.setVisible(false);
+        publication_yearL.setVisible(false);
+        clearButton.setVisible(false);
+        sp.setVisible(false);
+        tb.setVisible(false);
+        hideButton.setVisible(false);
+       
+      }
 
-    if (e.getSource() == deleteButton && !(publication_yearL.isVisible()) || e.getSource() == deleteButton && infoL.getText().equals("Add Panel") || e.getSource() == deleteButton && infoL.getText().equals("Update Panel")) {
+    }
+    if(e.getSource() == deleteButton){
+      if (panel.isVisible()) {
+        ISBN.setText("");
+        b1.setVisible(false);
+        b2.setVisible(false);
+        b3.setVisible(false);
+        okButton.setVisible(false);
+        b4.setVisible(false);
+        ISBN.setVisible(false);
+        ISBNL.setVisible(false);
+        title.setVisible(false);
+        titleL.setVisible(false);
+        author.setVisible(false);
+        authorL.setVisible(false);
+        genre.setVisible(false);
+        genreL.setVisible(false);
+        publication_year.setVisible(false);
+        publication_yearL.setVisible(false);
+        clearButton.setVisible(false);
+        sp.setVisible(false);
+        tb.setVisible(false);
+        hideButton.setVisible(false);
+
+        clearButton.setVisible(true);
+        banner.setVisible(false);
+        if (ifo.isEnabled()) {
+          ifo.setVisible(true);
+          ifo.setEnabled(false);
+        } else if (!(ifo.isEnabled())) {
+          ifo.setVisible(true);
+          ifo.setEnabled(true);
+
+        }
+        ISBN.setVisible(true);
+        ISBNL.setVisible(true);
+        infoL.setText("Delete Panel");
+        infoL.setVisible(true);
+        banner.setVisible(false);
+
+        
+      }
+
+    }
+
+    //if (e.getSource() == deleteButton && infoL.getText().equals("Add Panel") || e.getSource() == deleteButton && infoL.getText().equals("Update Panel")|| e.getSource() == deleteButton && infoL.getText().equals("")|| e.getSource() == deleteButton && infoL.getText().equals("Search Panel")|| e.getSource() == deleteButton && infoL.getText().equals("Delete Panel")) {
+      else if (e.getSource() == deleteButton && infoL.getText().equals("Delete Panel")) {
       if (panel.isVisible()) {
         b1.setVisible(false);
         b2.setVisible(false);
@@ -1075,6 +1187,9 @@ public class JavaBooks extends JFrame implements ActionListener {
         publication_year.setVisible(false);
         publication_yearL.setVisible(false);
         clearButton.setVisible(false);
+        sp.setVisible(false);
+        tb.setVisible(false);
+        hideButton.setVisible(false);
 
         clearButton.setVisible(true);
         banner.setVisible(false);
@@ -1384,7 +1499,8 @@ class Start extends JFrame implements MouseListener, ActionListener, FocusListen
   }
 
   public static void main(String[] args) {
-    new Start();
+    //new Start();
+    new JavaBooks();
 
   }
 
