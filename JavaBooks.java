@@ -35,8 +35,8 @@ public class JavaBooks extends JFrame implements ActionListener {
   static String database_table = "books"; //change this
   // Change info according to the user;
   private static String url = "jdbc:mysql://localhost:3306/" + database_name;
-  private static String username = "kamal"; //change this
-  private static String password = "Kamal1234"; //change this
+  private static String username = ""; //change this
+  private static String password = ""; //change this
   private static String path = "./src/"; //change this
   JFrame fa;
   Connection connection;
